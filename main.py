@@ -95,3 +95,46 @@ def czy_bezpieczny(wiatr):
 #     print(f"Cena karnetu: {cena_karnetu(wiek)}zl")
 # else:
 #     print("Wyciag zamkniety!")
+
+
+# ==========================================================
+# ZADANIE: SYSTEM ZARZĄDZANIA KINEM (FILTROWANIE DANYCH)
+# Cel: Prezentacja zagnieżdżonej logiki i iteracji po obiektach
+# ==========================================================
+
+filmy = [
+    {"tytul": "Król Lew", "wiek": 7, "3d": False},
+    {"tytul": "Batman", "wiek": 16, "3d": True},
+    {"tytul": "Piła", "wiek": 18, "3d": False},
+    {"tytul": "Toy Story", "wiek": 3, "3d": True},
+    {"tytul": "Diuna", "wiek": 12, "3d": True}
+]
+
+def czy_moze_obejrzec(wiek_widza, wiek_filmu):
+    """Sprawdza, czy wiek widza pozwala na obejrzenie danego tytułu."""
+    if wiek_widza >= wiek_filmu:
+        return True
+    else:
+        return False 
+
+# --- PRZYKŁAD DZIAŁANIA DLA WIEKU 14 LAT ---
+# moj_wiek = int(input("ile masz lat? "))  <-- Odkomentuj, aby użyć interaktywnie
+moj_wiek = 14 
+
+print(f"--- RAPORT KINOWY DLA WIEKU: {moj_wiek} ---")
+
+for film in filmy:
+    # 1. Sprawdzamy dostępność na podstawie wieku
+    if czy_moze_obejrzec(moj_wiek, film["wiek"]):
+        
+        # 2. Sprawdzamy dodatkowy atrybut (3D)
+        if film["3d"] == True:
+            print(f"{film['tytul']} - Zapraszamy na seans! (Zabierz okulary 3D! 🕶️)")
+        else:
+            print(f"{film['tytul']} - Zapraszamy na seans!")
+            
+    else:
+        # 3. Jeśli wiek jest niewystarczający
+        print(f"{film['tytul']} - Jesteś za młody na ten film. ❌")
+
+print("-" * 40)
